@@ -27,7 +27,7 @@ open class GenerateDependencyListTask : DefaultTask() {
                     val configuration: Configuration? = project.configurations.findByName(configName)
                     configuration?.let {
                         for (dependency in it.allDependencies) {
-                            writer.println("${dependency.group}:${dependency.name}:${dependency.version}")
+                            writer.println("${dependency.group}:${dependency.name}:${dependency.version};")
                         }
                     }
                 }
@@ -51,7 +51,7 @@ open class GenerateDependencyListTask : DefaultTask() {
                         logger.warn("Credentials of type ${credentials.javaClass.name} are not supported")
                         continue
                     }
-                    writer.println("${uri};$username;$password")
+                    writer.println("${uri};$username;$password;")
                 }
             }
         }
